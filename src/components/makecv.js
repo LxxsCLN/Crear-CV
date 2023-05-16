@@ -51,7 +51,7 @@ class MakeCV extends Component {
                 
                 <section className="personalinfo">
                     <h2>Educación</h2>
-                    {this.props.state.edulist}                                 
+                    {this.props.state.edulist}            
                     <button onClick={async()=>{
                         await this.props.newedu();
                         this.setState({edulist: this.props.state.edulist})                

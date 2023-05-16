@@ -14,47 +14,59 @@ class App extends Component {
       edulist: [],
       explist: [],
       personalinfo: {
-        name: "",
-        profession: "",
+        name: "Luis Espino",
+        profession: "Psiconauta",
         picture: "",
-        email: "",
-        phone: "",
-        address: "",
-        aboutme: ""
-      }
+        email: "lxxscln@gmail.com",
+        phone: "6664206969",
+        address: "Jesús Reyes Heroles 2935",
+        aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum leo a est dapibus convallis id vel ex. Quisque sit amet vehicula tortor. Proin tristique vitae lacus sit amet aliquam."
+      },
+      education: [
+      ],
+      experience: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
     this.newEducation = this.newEducation.bind(this);
-    this.showEducation = this.showEducation.bind(this);
     this.newExperience = this.newExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
   }
 
-  showEducation(){
-
-  }
-
-  newEducation(){
+  async newEducation(){
     const newkey = uniqid();
-    const copy = [<AddEducation key={newkey} delete={this.deleteEducation} id={newkey}/>];
-    this.setState({edulist: this.state.edulist.concat(copy)})      
+
+    let eduobj = {   id: newkey,  degree: "",      school: "",      addinfo: "",      date: "",    }
+    await this.setState({education: [...this.state.education, eduobj]})      
+
+    const copy = [<AddEducation key={newkey} delete={this.deleteEducation} change={this.handleChange2} state={this.state} id={newkey}/>];    
+    await this.setState({edulist: this.state.edulist.concat(copy)})  
+
   } 
 
-  deleteEducation(e){
+  async deleteEducation(e){
     const id = e.target.parentElement.id;
     this.setState({edulist: this.state.edulist.filter(i => i.key !== id)});
+    await this.setState({education: this.state.education.filter(i => i.id !== id)});
   } 
 
-  newExperience(){
+  async newExperience(){
     const newkey = uniqid();
-    const copy = [<AddExperience key={newkey} delete={this.deleteExperience} id={newkey}/>];
-    this.setState({explist: this.state.explist.concat(copy)})      
+
+    let expobj = {   id: newkey,  position: "",      company: "",      responsibilities: "",      date: "",    }
+    await this.setState({experience: [...this.state.experience, expobj]})   
+
+    const copy = [<AddExperience key={newkey} delete={this.deleteExperience} change={this.handleChange3} id={newkey} state={this.state}/>];
+    await this.setState({explist: this.state.explist.concat(copy)})      
+    console.log(this.state)
   } 
 
-  deleteExperience(e){
+  async deleteExperience(e){
     const id = e.target.parentElement.id;
     this.setState({explist: this.state.explist.filter(i => i.key !== id)});
+    await this.setState({experience: this.state.experience.filter(i => i.id !== id)});
   } 
 
   handleChange = (e) => {
@@ -65,6 +77,36 @@ class App extends Component {
       },
     });
   };
+
+  handleChange2 = (e) => {
+    const { name, value } = e.target
+
+    this.setState((prevState) => {
+      const newEducation = prevState.education.map((educationItem) => {
+        if (educationItem.id === e.target.id) {
+          return { ...educationItem, [name]: value }
+        }
+        return educationItem
+      })
+      return { ...prevState, education: [...newEducation] }
+    })
+    console.log(this.state)
+  }
+
+  handleChange3 = (e) => {
+    const { name, value } = e.target
+
+    this.setState((prevState) => {
+      const newExperience = prevState.experience.map((experienceItem) => {
+        if (experienceItem.id === e.target.id) {
+          return { ...experienceItem, [name]: value }
+        }
+        return experienceItem
+      })
+      return { ...prevState, experience: [...newExperience] }
+    })
+    console.log(this.state)
+  }
 
   render(){
     return (

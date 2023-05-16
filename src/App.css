@@ -102,10 +102,14 @@ input[type=file]{
     grid-column: span 2;
     background-color: #25274D;
     color: white;
+    padding: 10px;
 }
 
 .showcvmain{
-
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .showcvaside{

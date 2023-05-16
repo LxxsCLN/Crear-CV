@@ -1,15 +1,22 @@
 import React, { Component } from "react";
+import ShowEducation from "./showeducation";
+import ShowExperience from "./showexperience"
 
 class ShowCV extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            showedulist: []
         };
         }
 
     render(){
+        const educationList = this.props.state.education.map((eduitem) => {
+            return <ShowEducation key={eduitem.id} eduitem={eduitem}/>
+        })
+        const experienceList = this.props.state.experience.map((expitem) => {
+            return <ShowExperience key={expitem.id} expitem={expitem}/>
+        })
         return (
             <div className="showcv">
                 <header className="showcvheader">
@@ -23,10 +30,11 @@ class ShowCV extends Component {
                     </section>
                     <section>
                         <h3>Educación</h3>
-                        {this.state.showedulist}
+                        {educationList}
                     </section>
                     <section>
                         <h3>Experiencia</h3>
+                        {experienceList}
                     </section>
                 </main>
                 <aside className="showcvaside">
