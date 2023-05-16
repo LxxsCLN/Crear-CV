@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap');
 
 *,
 *::before,
@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Oxygen', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Nunito', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .App{
@@ -112,11 +112,46 @@ input[type=file]{
     gap: 10px;
 }
 
+.image{
+    width: 10vw;
+    max-height: 10vw;
+}
+
+.imagediv{
+    display: flex;
+    height: 10vw;
+    object-fit: contain;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutme{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.showedu,.showexp{
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 4.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 5px;
+}
+
+.date{
+    grid-row: span 3;
+}
+
 .showcvaside{
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    background-color: #cfd1e2;
 }
 
 .info{
@@ -143,18 +178,26 @@ input[type=file]{
 }
 
 .showcv,.makecv{
-    background-color: #cfd1e2;
+    background-color: #d9dbec;
 }
 
-.AddEducation,.AddExperience{
+.AddEducation,.AddExperience,.AddSkill{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+.skillul{
+    padding-left: 20px;
+}
 
+h3{
+    color: #25274D;
+}
 
-
+h4{
+    opacity: .75;
+}
 
 footer{
     color: #ffffff;

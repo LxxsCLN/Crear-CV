@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ShowEducation from "./showeducation";
 import ShowExperience from "./showexperience"
+import ShowSkill from "./showskill";
 
 class ShowCV extends Component {
 
@@ -17,6 +18,9 @@ class ShowCV extends Component {
         const experienceList = this.props.state.experience.map((expitem) => {
             return <ShowExperience key={expitem.id} expitem={expitem}/>
         })
+        const skillList = this.props.state.skills.map((skiitem) => {
+            return <ShowSkill key={skiitem.id} skiitem={skiitem}/>
+        })
         return (
             <div className="showcv">
                 <header className="showcvheader">
@@ -24,21 +28,29 @@ class ShowCV extends Component {
                     <h2>{this.props.state.personalinfo.profession}</h2>
                 </header>
                 <main className="showcvmain">
-                    <section>
+                    <section className="aboutme">
                         <h3>Sobre mí</h3>
                         <p>{this.props.state.personalinfo.aboutme}</p>
                     </section>
-                    <section>
+                    <section className="aboutme">
                         <h3>Educación</h3>
                         {educationList}
                     </section>
-                    <section>
+                    <section className="aboutme">
                         <h3>Experiencia</h3>
                         {experienceList}
                     </section>
+                    <section className="aboutme">
+                        <h3>Habilidades</h3>
+                        <ul className="skillul">{skillList}</ul>
+                        
+                    </section>
                 </main>
-                <aside className="showcvaside">
-                    <img src="#" alt="#"></img>
+                <aside className="showcvaside">               
+
+
+                    <div className="imagediv"><img src={this.props.state.personalinfo.picture} alt="" className="image"/></div>
+                    
                     <div className="info">
                         <h3>Información Personal</h3>
                         <div className="datos">

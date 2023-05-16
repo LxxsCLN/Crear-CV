@@ -10,12 +10,12 @@ class ShowEducation extends Component {
 
     render(){
         return (
-            <div>
+            <section className="showedu">
+                <p className="date">{this.props.eduitem.date}</p>
                 <p>{this.props.eduitem.degree}</p>
                 <p>{this.props.eduitem.school}</p>
-                <p>{this.props.eduitem.addinfo}</p>
-                <p>{this.props.eduitem.date}</p>
-            </div>
+                <p>{this.props.eduitem.addinfo}</p>                
+            </section>
         );
     }
   

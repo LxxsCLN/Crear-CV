@@ -42,7 +42,11 @@ class MakeCV extends Component {
                     <h2>Información Personal</h2>
                     <input type="text" placeholder="Nombre" id="name" onChange={this.props.change}></input>
                     <input type="text" placeholder="Profesión" id="profession" onChange={this.props.change}></input>
-                    <label className="inputfile">Subir foto<input type="file" id="picture" onChange={this.props.change}></input></label>
+                    
+                    <label className="inputfile">Subir foto
+                    <input type="file" id="picture" name="picture" accept="image/*" onChange={this.props.handleChangeImage}></input>
+                    </label>
+                    
                     <input type="email" placeholder="Correo electrónico" id="email" onChange={this.props.change}></input>
                     <input type="tel" placeholder="Teléfono" id="phone" onChange={this.props.change}></input>
                     <input type="text" placeholder="Dirección" id="address" onChange={this.props.change}></input>
@@ -67,6 +71,15 @@ class MakeCV extends Component {
                         }}>Agregar Experiencia</button>
                 </section>
                 
+                <section className="personalinfo">
+                    <h2>Habilidades</h2>
+                    {this.props.state.skilllist}  
+                    <button onClick={async()=>{
+                        await this.props.newski();
+                        this.setState({skilist: this.props.state.skilist})                
+                        }}>Agregar Hablilidad</button>
+                </section>
+
             </div>
         );
     }

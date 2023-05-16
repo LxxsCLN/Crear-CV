@@ -11,12 +11,13 @@ class ShowExperience extends Component {
 
     render(){
         return (
-            <div>
+            <section className="showexp">
+                <p className="date">{this.props.expitem.date}</p>
                 <p>{this.props.expitem.position}</p>
                 <p>{this.props.expitem.company}</p>
                 <p>{this.props.expitem.responsibilities}</p>
-                <p>{this.props.expitem.date}</p>
-            </div>
+                
+            </section>
         );
     }
   

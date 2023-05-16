@@ -5,6 +5,7 @@ import './App.css'
 import uniqid from 'uniqid';
 import AddEducation from './components/addeducation'
 import AddExperience from './components/addexperience'
+import AddSkill from './components/addskill';
 
 class App extends Component {
 
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       edulist: [],
       explist: [],
+      skilllist: [],
       personalinfo: {
         name: "Luis Espino",
         profession: "Psiconauta",
@@ -24,16 +26,37 @@ class App extends Component {
       },
       education: [
       ],
-      experience: []
+      experience: [],
+      skills: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
+    this.handleChange4 = this.handleChange4.bind(this);
     this.newEducation = this.newEducation.bind(this);
     this.newExperience = this.newExperience.bind(this);
     this.deleteExperience = this.deleteExperience.bind(this);
     this.deleteEducation = this.deleteEducation.bind(this);
+    this.newSkill = this.newSkill.bind(this);
+    this.deleteSkill = this.deleteSkill.bind(this);
   }
+
+  async newSkill(){
+    const newkey = uniqid();
+
+    let skiobj = {   id: newkey,  skill: "",    }
+    await this.setState({skills: [...this.state.skills, skiobj]})      
+
+    const copy = [<AddSkill key={newkey} delete={this.deleteSkill} change={this.handleChange4} state={this.state} id={newkey}/>];    
+    await this.setState({skilllist: this.state.skilllist.concat(copy)})  
+  }
+
+  async deleteSkill(e){
+    const id = e.target.parentElement.id;
+    this.setState({skilllist: this.state.skilllist.filter(i => i.key !== id)});
+    await this.setState({skills: this.state.skills.filter(i => i.id !== id)});
+  } 
 
   async newEducation(){
     const newkey = uniqid();
@@ -68,6 +91,20 @@ class App extends Component {
     this.setState({explist: this.state.explist.filter(i => i.key !== id)});
     await this.setState({experience: this.state.experience.filter(i => i.id !== id)});
   } 
+
+  /* state = {
+  img: logo
+}
+
+ */
+
+  handleChangeImage = (e) => {
+    this.setState({
+      personalinfo: {
+        ...this.state.personalinfo,
+        [e.target.id]: URL.createObjectURL(e.target.files[0]),
+      }})
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -106,6 +143,22 @@ class App extends Component {
       return { ...prevState, experience: [...newExperience] }
     })
     console.log(this.state)
+    
+  }
+
+  handleChange4 = (e) => {
+    const { name, value } = e.target
+
+    this.setState((prevState) => {
+      const newSkill = prevState.skills.map((skillItem) => {
+        if (skillItem.id === e.target.id) {
+          return { ...skillItem, [name]: value }
+        }
+        return skillItem
+      })
+      return { ...prevState, skills: [...newSkill] }
+    })
+    console.log(this.state)
   }
 
   render(){
@@ -113,7 +166,7 @@ class App extends Component {
       <div className="App">
         <header className='header'><h1>Crea tu CV</h1></header>
         <main className='main'>
-          <MakeCV change={this.handleChange} newedu={this.newEducation} state={this.state} newexp={this.newExperience}/>
+          <MakeCV change={this.handleChange} handleChangeImage={this.handleChangeImage} newedu={this.newEducation} state={this.state} newexp={this.newExperience} newski={this.newSkill}/>
           <ShowCV state={this.state}/>
         </main>
         <footer>luiseseberre2023</footer>
