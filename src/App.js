@@ -16,13 +16,13 @@ class App extends Component {
       explist: [],
       skilllist: [],
       personalinfo: {
-        name: "Luis Espino",
-        profession: "Psiconauta",
+        name: "",
+        profession: "",
         picture: "",
-        email: "lxxscln@gmail.com",
-        phone: "6664206969",
-        address: "Jesús Reyes Heroles 2935",
-        aboutme: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean elementum leo a est dapibus convallis id vel ex. Quisque sit amet vehicula tortor. Proin tristique vitae lacus sit amet aliquam."
+        email: "",
+        phone: "",
+        address: "",
+        aboutme: ""
       },
       education: [
       ],
