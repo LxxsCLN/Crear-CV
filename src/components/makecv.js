@@ -6,35 +6,8 @@ class MakeCV extends Component {
         super(props);
         this.state = {
         };
-        // this.newEducation = this.newEducation.bind(this);
-        // this.deleteEducation = this.deleteEducation.bind(this);
-        /* this.newExperience = this.newExperience.bind(this);
-        this.deleteExperience = this.deleteExperience.bind(this); */
     }
 
-
-    /* newEducation(){
-        const newkey = uniqid();
-        const copy = [<AddEducation key={newkey} delete={this.deleteEducation} id={newkey}/>];
-        this.setState({edulist: this.state.edulist.concat(copy)});
-    } */
-
-    /* newExperience(){
-        const newkey = uniqid();
-        const copy = [<AddExperience key={newkey} delete={this.deleteExperience} id={newkey}/>];
-        this.setState({explist: this.state.explist.concat(copy)});
-    }  */
-
-    /* deleteEducation(e){
-        const id = e.target.parentElement.id;
-        this.setState({edulist: this.state.edulist.filter(i => i.key !== id)});
-    }
- */
-    /* deleteExperience(e){
-        const id = e.target.parentElement.id;
-        this.setState({explist: this.state.explist.filter(i => i.key !== id)});
-    }      */
-    
     render(){
         return (
             <div className="makecv">
@@ -79,7 +52,6 @@ class MakeCV extends Component {
                         this.setState({skilist: this.props.state.skilist})                
                         }}>Agregar Hablilidad</button>
                 </section>
-
             </div>
         );
     }

@@ -40,7 +40,7 @@ class App extends Component {
     this.deleteEducation = this.deleteEducation.bind(this);
     this.newSkill = this.newSkill.bind(this);
     this.deleteSkill = this.deleteSkill.bind(this);
-  }
+  } 
 
   async newSkill(){
     const newkey = uniqid();
@@ -91,12 +91,6 @@ class App extends Component {
     this.setState({explist: this.state.explist.filter(i => i.key !== id)});
     await this.setState({experience: this.state.experience.filter(i => i.id !== id)});
   } 
-
-  /* state = {
-  img: logo
-}
-
- */
 
   handleChangeImage = (e) => {
     this.setState({
@@ -167,7 +161,7 @@ class App extends Component {
         <header className='header'><h1>Crea tu CV</h1></header>
         <main className='main'>
           <MakeCV change={this.handleChange} handleChangeImage={this.handleChangeImage} newedu={this.newEducation} state={this.state} newexp={this.newExperience} newski={this.newSkill}/>
-          <ShowCV state={this.state}/>
+          <ShowCV state={this.state}/>          
         </main>
         <footer>luiseseberre2023</footer>
       </div>

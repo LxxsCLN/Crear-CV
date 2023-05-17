@@ -30,7 +30,7 @@ class ShowCV extends Component {
                 <main className="showcvmain">
                     <section className="aboutme">
                         <h3>Sobre mí</h3>
-                        <p>{this.props.state.personalinfo.aboutme}</p>
+                        <p className="aboutmetext">{this.props.state.personalinfo.aboutme}</p>
                     </section>
                     <section className="aboutme">
                         <h3>Educación</h3>
