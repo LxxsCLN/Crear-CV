@@ -223,9 +223,6 @@ footer{
 }
 
 @media (width < 500px){
-    footer{
-        color: #e93131;
-    }
     .main{
         height: auto;
         flex-direction: column;
